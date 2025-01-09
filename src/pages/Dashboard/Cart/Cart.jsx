@@ -5,8 +5,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 
 const Cart = () => {
+
     const [cart, refetch] = useCart();
-    const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+    const totalPrice = cart?.reduce((total, item) => total + item.price, 0);
     const axiosSecure = useAxiosSecure();
 
     const handleDelete = id => {
@@ -60,7 +61,7 @@ const Cart = () => {
                     </thead>
                     <tbody>
                         {
-                            cart.map((item, index) => <tr key={item._id}>
+                            cart?.map((item, index) => <tr key={item._id}>
                                 <th>
                                     {index + 1}
                                 </th>
@@ -74,9 +75,9 @@ const Cart = () => {
                                     </div>
                                 </td>
                                 <td>
-                                    {item.name}
+                                    {item?.name}
                                 </td>
-                                <td>${item.price}</td>
+                                <td>${item?.price}</td>
                                 <th>
                                     <button
                                         onClick={() => handleDelete(item._id)}
