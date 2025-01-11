@@ -30,8 +30,8 @@ const UpdateItem = () => {
         category: data.category,
         price: parseFloat(data.price),
         recipe: data.recipe,
-        image: res.data.data.display_url,
-      };
+        image: res.data?.data?.display_url,
+      } || {};
       //
       const menuRes = await axiosSecure.patch(`/menu/${_id}`, menuItem);
       console.log(menuRes.data);
